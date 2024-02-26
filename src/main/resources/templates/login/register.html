@@ -1,0 +1,94 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HaVu Studios</title>
+    <link rel="stylesheet" th:href="@{/css/fragment/header.css}">
+    <link rel="stylesheet" th:href="@{/css/login/login.css}">
+    <link rel="stylesheet" th:href="@{css/fragment/footer.css}">
+    <link
+            rel="stylesheet"
+            th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css}"
+    />
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}" />
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+    />
+</head>
+<body>
+    <div th:replace="~{fragment/header :: header}"></div>
+    <div class="register">
+        <div class="login-img">
+            <div class="container">
+                <div class="title-login">
+                    Đăng ký tài khoản
+                </div>
+                <ul class="breadcumb">
+                    <li class="home">
+                        <a th:href="@{/home}">Trang chủ</a>
+                        <span> <i class="fa-solid fa-chevron-right"></i> </span>
+                    </li>
+                    <li class="text">
+                        <span style="color: #f3a270; font-weight: 400; ">Đăng ký tài khoản</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="login-body">
+            <div class="container">
+                <div class="page_login">
+                    <div class="row">
+                        <div class="row-login">
+                            <div class="row align-items-center">
+                                <div class="pagecustome">
+                                    <div class="wpx">
+                                        <ul class="menulist">
+                                            <li ><a th:href="@{/login}">Đăng nhập</a></li>
+                                            <li class="active"><a href="#">Đăng ký</a></li>
+                                        </ul>
+                                        <h1 class="title-heads"><span>Đăng ký</span></h1>
+                                        <div th:if="${error}" class="error" th:text="${error}"></div>
+                                        <div id="login" class="section">
+                                            <form th:action="@{/register}" th:object="${user}" method="post">
+                                                <span class="form-signup"></span>
+                                                <div class="form-signup">
+                                                    <fieldset class="form-group">
+                                                        <input name="fullName" type="text" required placeholder="Họ và tên">
+                                                    </fieldset>
+                                                    <fieldset class="form-group">
+                                                        <input type="username" name="username"  required placeholder="Tên tài khoản">
+                                                    </fieldset>
+<!--                                                    <fieldset class="form-group">-->
+<!--                                                        <input type="text" pattern="\d+" required placeholder="Số điện thoại">-->
+<!--                                                    </fieldset>-->
+                                                    <fieldset class="form-group">
+                                                        <input type="password" name="password" required placeholder="Mật khẩu">
+                                                    </fieldset>
+                                                    <div class="pull-xs">
+                                                        <input class="btn_50" type="submit" value="Đăng ký">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="social-login">
+                                            <p style="text-align: center; margin: 15px 0;">Hoặc đăng nhập bằng</p>
+                                            <a href=""><img width="128" height="37" src="//bizweb.dktcdn.net/assets/admin/images/login/fb-btn.svg" alt=""></a>
+                                            <a href=""><img width="128" height="37" src="//bizweb.dktcdn.net/assets/admin/images/login/gp-btn.svg" alt=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="~{fragment/footer :: footer}"></div>
+</body>
+</html>

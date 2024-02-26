@@ -1,0 +1,162 @@
+/* ========== footer ============ */
+.footer {
+    background: #1b1d1f;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer .mid-footer {
+    color: #fff;
+    padding: 40px 0;
+}
+
+.footer .mid-footer .row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+.footer .mid-footer .ft-info,
+.footer .mid-footer .ft-menu,
+.footer .mid-footer .ft-pay {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.footer .mid-footer .ft-info {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+
+.footer .mid-footer .ft-menu {
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+}
+.footer .mid-footer .ft-pay {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+.footer .mid-footer .title-menu {
+    font-size: 18px;
+    margin-bottom: 20px;
+    position: relative;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.footer .mid-footer .des_foo {
+    color: #fff;
+    margin-bottom: 10px;
+}
+.footer .mid-footer .content-contact {
+    line-height: 30px;
+}
+.footer .mid-footer .social-footer .social {
+    margin-top: 10px;
+}
+.footer .mid-footer .social-footer .social a {
+    display: inline-block;
+    background-color: transparent;
+    width: 30px;
+    font-size: 14px;
+    margin-right: 5px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    text-align: center;
+    position: relative;
+}
+
+.footer .mid-footer .social-footer .social a i {
+    font-size: 14px;
+    margin: auto;
+    color: var(--white);
+}
+
+.footer .mid-footer .social-footer .social a i:hover
+{
+    color: var(--orange);
+}
+
+.footer .ft-menu .footer-click {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.footer .mid-footer .list-menu {
+    padding-left: 0px;
+
+}
+.footer .mid-footer .list-menu li {
+    margin-bottom: 15px;
+}
+.footer .mid-footer .list-menu li a {
+    font-size: 14px;
+    color: #fff;
+    transition: all .4s ease;
+}
+.footer .mid-footer .list-menu li a:hover {
+    color: var(--orange);
+}
+
+.footer .mid-footer .content-mailchimp {
+    margin-bottom: 15px;
+    display: block;
+}
+.footer .mid-footer .newsletter-form {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.footer .mid-footer .newsletter-form input {
+    height: 40px;
+    width: 100%;
+    border: 0;
+    padding: 10px 110px 10px 10px;
+    border-radius: 10px;
+    margin-bottom: 0px;
+    outline: none;
+}
+.footer .mid-footer .newsletter-form button {
+    height: 40px;
+    border: 0;
+    background: #f3a270;
+    color: #fff;
+    padding: 0 20px;
+    margin-top: 0;
+    border-radius: 0 10px 10px 0;
+    position: absolute;
+    right: 0;
+}
+.footer .mid-footer .thanhtoan li {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 8px;
+}
+.footer .mid-footer .thanhtoan li img {
+    max-height: 36px;
+    width: auto;
+}
+.footer #copyright {
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    border-top: 1px solid #fff;
+    text-align: center;
+}
+
+.col-lg-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.footer .copyright .container {
+    display: block;
+}
+.footer .container .row {
+    display: flex;
+    flex-wrap: wrap;
+}

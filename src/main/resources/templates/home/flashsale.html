@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section class="section-flashsale" th:fragment="flashsale">
+  <div class="flashsale-container">
+    <div class="flashsale-title">
+      <h2 class="title-module">
+        <a href="">Khuyến mãi đặc biệt</a>
+      </h2>
+      <a href="" class="btn-control"
+      >Xem tất cả
+        <i class="fa-solid fa-arrow-right-long"></i>
+      </a>
+    </div>
+
+    <div class="product-flash-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <form th:action="@{/cart/add}" method="post" class="variants product-action" th:each="product, iStat : ${products}">
+            <input type="hidden" th:value="${product.productId}" name="productId" >
+            <input type="hidden" name="quantity" value="1" min="1">
+            <div class="product-thumbnail">
+              <a class="image_thumb scale_hover" th:href="@{/product/{productId}(productId=${product.productId})}">
+                <img
+                        width="520"
+                        height="520"
+                        class="lazyload image1"
+                        th:src="${product.primaryImage.imagePath}"
+                />
+              </a>
+              <div class="smart"><span>- 12% </span></div>
+              <a href="" class="setWishlist btn-wishlist">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+              <div class="action">
+                <button class="btn-cart btn-views add_to_cart " title="Thêm vào giỏ" type="submit">
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </button>
+                <a title="Xem nhanh" href="" class="quick-view btn-views">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+              </div>
+              <div class="badge">
+                <span class="new">Hàng mới</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">
+                <a class="line-clamp line-clamp-2" href="" th:text="${product.productName}"></a>
+              </h3>
+              <div class="price-box" th:text="${product.price}">
+                <span class="compare-price">7.000.000₫</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="swiper-pagination">
+        <span class="swiper-pagination-bullet"></span>
+        <span class="swiper-pagination-bullet"></span>
+        <span class="swiper-pagination-bullet"></span>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script src="/static/js/quickProduct.js"></script>
+</section>
+</body>
+</html>

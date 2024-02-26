@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment/head :: head}">
+</head>
+<body>
+<div th:replace="~{fragment/header :: header}"></div>
+<section class="customer_account">
+  <div class="bread-crumb">
+    <div class="breadcrumb-container">
+      <ul class="breadcrumb">
+        <li class="link"><a href="/home">Trang chủ /</a></li>
+        <li class="link">Trang khách hàng</li>
+      </ul>
+    </div>
+  </div>
+    <div class="info-container">
+        <div class="row">
+            <div class="account-left">
+                <div class="block-account">
+                    <h5 class="title-account">Trang tài khoản</h5>
+                    <p>Xin chào, <span th:text="${username}"></span></p>
+                    <ul>
+                        <li><a class="title-info" href="">Thông tin tài khoản</a></li>
+                        <li><a class="title-info" th:href="@{/account/orders}">Đơn hàng của bạn</a></li>
+                        <li><a class="title-info" th:href="@{/account/changepassword}">Đổi mật khẩu</a></li>
+                        <li><a class="title-info" th:href="@{/account/addresses}">Sổ địa chỉ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="account-right">
+                <h1 class="title-head">Thông tin tài khoản</h1>
+                <div class="name-account">
+                    <p th:text="'Họ tên: ' + ${fullName}"></p>
+                    <p th:text="'Email: ' + ${email}"></p>
+                    <p th:text="'Số điện thoại: ' + ${phoneNumber}"></p>
+                    <p th:text="'Địa chỉ: ' + ${fullName}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="~{fragment/footer :: footer}"></div>
+</body>
+</html>

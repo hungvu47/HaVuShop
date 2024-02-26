@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HaVuShop</title>
+  <link
+          rel="stylesheet"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css}"
+  />
+  <link rel="preconnect" th:href="@{https://fonts.googleapis.com}" />
+  <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+  />
+  <link rel="stylesheet" th:href="@{/css/fragment/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragment/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/user/homebody.css}">
+  <link rel="stylesheet" th:href="@{/css/user/menuNav.css}">
+</head>
+<body>
+<div th:replace="~{fragment/header :: header}"></div>
+<div class="introduction">
+  <section class="bread-crumb">
+    <div class="breadcrumb-container">
+      <ul class="breadcrumb">
+        <li class="link"><a href="/home">Trang chủ /</a></li>
+        <li class="link">Giới thiệu</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="page">
+    <div class="container">
+      <div class="content-page">
+        <p>Bean Furniture tự hào với đội ngũ thiết kế trẻ, luôn sáng tạo luôn cập nhật các xu hướng thiết kế
+          mới. Thế mạnh chủ lực là tư vấn thiết kế, thi công đồ gỗ. Với phương châm “Không Đâu Bằng Nhà”
+          Bean Furniture đã tự tin khẳng định chất lượng, dịch vụ và tính thẩm mĩ cao trong từng chi tiết
+          thiết kế, thi công. Luôn mang lại sự hài lòng cho Khách Hàng!</p>
+        <p>Đến với chúng tôi bạn sẽ được quyền lợi:</p>
+        <p><strong>Bảo hành chuyên nghiệp:</strong> Dịch vụ bảo hành chuyên nghiệp, tận tình và chu đáo cho khách hàng</p>
+        <p><strong>Giá tốt nhất tại Việt Nam:</strong>Tự tin là nhà cung cấp đồ trang trí với giá cả tốt nhất tại Việt Nam</p>
+        <p><strong>Sản phẩm chính hãng: </strong>Chúng tôi cam kết 100% sản phẩm là uy tín, chất lượng cao</p>
+        <p>
+          <img src="//bizweb.dktcdn.net/100/494/385/files/image-set-1-7eef45b0-d147-4c83-81b7-ed4cbc7414be.jpg?v=1696566888481" alt="">
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div th:replace="~{fragment/footer :: footer}"></div>
+</body>
+</html>

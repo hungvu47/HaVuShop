@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HaVu Shop</title>
+    <link
+            rel="stylesheet"
+            th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css}"
+    />
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}" />
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" th:href="@{/css/fragment/header.css}">
+    <link rel="stylesheet" th:href="@{/css/fragment/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/user/homebody.css}">
+    <link rel="stylesheet" th:href="@{/css/user/menuNav.css}">
+</head>
+<body>
+<div th:replace="~{fragment/header :: header}"></div>
+
+<div class="layout-collection">
+    <div class="bread-crumb">
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb">
+                <li class="link"><a href="/home">Trang chủ /</a></li>
+                <li class="link">Tất cả sản phẩm</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <aside class="dqdt-sidebar sidebar">
+                <div class="section-box-bg">
+                    <aside class="aside-item aside-cate">
+                        <div class="aside-title">Danh mục sản phẩm</div>
+                        <div class="aside-content">
+                            <ul class="navbar-pills nav-category">
+                                <li class="nav-item" th:each="category : ${categories}">
+                                    <a href="" class="nav-link" th:text="${category.categoryName}"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+                <div class="filter-content">
+                    <div class="filter-container">
+
+                    </div>
+                </div>
+            </aside>
+
+            <div class="block-collection">
+                <div class="section-box-bg">
+                    <h1 class="title-page">Tất cả sản phẩm</h1>
+                    <div class="category-products products-view">
+                        <div id="sort-by">
+                            <label class="left"><img width="16" height="16" src="https://bizweb.dktcdn.net/100/494/385/themes/919262/assets/sort.png?1699437349843" alt="">Sắp xếp:</label>
+                            <ul id="sortBy">
+                                <li>
+                                    <span>Mặc định</span>
+                                    <ul>
+                                        <li><a href="">Mặc định</a></li>
+                                        <li><a href="">Giá tăng dần</a></li>
+                                        <li><a href="">Giá giảm dần</a></li>
+                                        <li><a href="">Hàng mới nhất</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="products-view">
+                            <div class="row row-fix">
+                                <div class="col-fix">
+                                    <div class="item_product_main">
+                                        <form th:action="@{/cart/add}" method="post" class="variants product-action" th:each="product, iStat : ${products}">
+                                            <input type="hidden" th:value="${product.productId}" name="productId" >
+                                            <input type="hidden" name="quantity" value="1" min="1">
+                                            <div class="product-thumbnail">
+                                                <a class="image_thumb scale_hover" th:href="@{/product/{productId}(productId=${product.productId})}">
+                                                    <img
+                                                            width="520"
+                                                            height="520"
+                                                            class="lazyload image1"
+                                                            th:src="${product.primaryImage.imagePath}"
+                                                    />
+                                                </a>
+                                                <div class="smart"><span>- 12% </span></div>
+                                                <a href="" class="setWishlist btn-wishlist">
+                                                    <i class="fa-regular fa-heart"></i>
+                                                </a>
+                                                <div class="action">
+                                                    <button class="btn-cart btn-views add_to_cart " title="Thêm vào giỏ" type="submit">
+                                                        <i class="fa-solid fa-basket-shopping"></i>
+                                                    </button>
+                                                    <a title="Xem nhanh" href="" class="quick-view btn-views">
+                                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="badge">
+                                                    <span class="new">Hàng mới</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <h3 class="product-name">
+                                                    <a class="line-clamp line-clamp-2" href="" th:text="${product.productName}"></a>
+                                                </h3>
+                                                <div class="price-box" th:text="${product.price}">
+                                                    <span class="compare-price">7.000.000₫</span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pagenav">
+                            <nav class="nav_pagi">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a href="" class="page-link link-next-pre"><i class="fa-solid fa-angle-left"></i></a>
+                                    </li>
+                                    <li class="page-item active disabled">
+                                        <a href="" class="page-link">1</a>
+                                    </li>
+                                    <li class="page-item active disabled">
+                                        <a href="" class="page-link">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="" class="page-link link-next-pre"><i class="fa-solid fa-angle-right"></i></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragment/footer :: footer}"></div>
+</body>
+</html>

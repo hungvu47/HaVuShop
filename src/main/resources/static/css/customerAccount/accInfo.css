@@ -1,0 +1,72 @@
+/* ========== info ============ */
+.customer_account {
+    margin-top: 75px;
+}
+
+.info-container {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    max-width: 1279px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.info-container .account-left {
+    padding: 0 10px;
+    flex: 0 0 25%;
+}
+
+.info-container .account-right {
+    padding: 0 10px;
+    flex: 0 0 75%;
+}
+
+.info-container .block-account .title-account {
+    font-size: 19px;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 7px;
+    margin-top: 0;
+    text-transform: uppercase;
+}
+
+.info-container .block-account p {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 28px;
+    color: #000;
+    position: relative;
+}
+
+.info-container .block-account p span {
+    color: #ef4339;
+}
+
+.info-container  .block-account ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.info-container .block-account ul .title-info {
+    font-weight: 400;
+    font-size: 15px;
+    color: #000;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.info-container .title-head {
+    font-size: 19px;
+    /*line-height: 22px;*/
+    font-weight: 400;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 27px;
+}
+
+.info-container .account-right p {
+    margin-bottom: 20px;
+}

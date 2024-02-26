@@ -1,0 +1,105 @@
+<!-- cart.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment/head :: head}">
+</head>
+<body>
+<div th:replace="~{fragment/header :: header}"></div>
+
+<section class="cart-page">
+  <div class="bread-crumb">
+    <div class="breadcrumb-container">
+      <ul class="breadcrumb">
+        <li class="link"><a href="/home">Trang chủ /</a></li>
+        <li class="link">Giỏ hàng</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cart-container" >
+    <form th:action="@{/cart/update}" method="post" th:object="${cartItem}" >
+      <div class="cart-header-info">
+        <div>Thông tin sản phẩm</div>
+        <div>Đơn giá</div>
+        <div>Số lượng</div>
+        <div>Thành tiền</div>
+      </div>
+
+      <div class="cart-body" th:each="cartItem : ${cart.cartItems}">
+        <div class="items" >
+          <div class="item">
+            <a th:href="@{/product/{productId} (productId= ${cartItem.product.productId})}" class="cart_image">
+              <img th:src="${cartItem.product.primaryImage.imagePath}" alt="">
+            </a>
+            <div class="item-info">
+              <div class="item-name" >
+                <a class="product-name" th:href="@{/product/{productId} (productId= ${cartItem.product.productId})}" th:text="${cartItem.product.productName}"></a>
+                <a th:href="@{/cart/delete/{cartItemId}(cartItemId=${cartItem.cartItemId})}" class="remote-item-cart">Xóa</a>
+              </div>
+              <div class="grid">
+                <div class="item-prices"><span class="item-price" th:text="${#numbers.formatDecimal(cartItem.product.price, 0, 'COMMA', 0, 'POINT') + '₫'}"></span></div>
+              </div>
+              <div class="grid">
+                <div class="item-quantity">
+                  <div class="input-group-button">
+                    <input type="hidden" name="quantityChange" id="quantityChange" value="0" />
+                    <button type="button" th:onclick="'updateQuantity(-1, ' + ${cartItem.cartItemId} + ')'" >-</button>
+                    <input class="number-sidebar" id="quantityInput" type="text" th:value="${cartItem.quantity}">
+                    <button type="button" th:onclick="'updateQuantity(1, ' + ${cartItem.cartItemId} + ')'" >+</button>
+                  </div>
+                </div>
+              </div>
+              <div class="grid">
+                <div class="item-prices"><span class="item-price" th:text="${#numbers.formatDecimal(cartItem.quantity * cartItem.product.price, 0, 'COMMA', 0 , 'POINT') + '₫'} "></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-footer__container">
+          <div class="cart-subtotal">
+            <div class="cart__col-6">Tổng tiền:</div>
+            <div class="cart__totle"><span class="total-price" th:text="${#numbers.formatDecimal(total, 0, 'COMMA', 0, 'POINT') + '₫'}"></span></div>
+          </div>
+          <div class="cart__btn-proceed-checkout-dt">
+            <button><a th:href="@{/checkout}">Thanh toán</a></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<div th:replace="~{fragment/footer :: footer}"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:inline="javascript">
+  /*<![CDATA[*/
+  function updateQuantity(quantityChange, cartItemId) {
+    // Lấy giá trị hiện tại từ input số lượng
+    var currentQuantity = parseInt($("#quantityInput").val());
+
+    // Tính toán số lượng mới
+    var newQuantity = currentQuantity + quantityChange;
+
+    // Gửi yêu cầu Ajax để cập nhật số lượng
+    $.ajax({
+      type: 'POST',
+      url: '/update/' + cartItemId,
+      contentType: 'application/json',
+      data: JSON.stringify({ quantityChange: quantityChange }),
+      success: function(response) {
+        // Xử lý kết quả thành công nếu cần
+        console.log(response);
+      },
+      error: function(error) {
+        // Xử lý lỗi nếu có
+        console.log(error);
+      }
+    });
+  }
+  /*]]>*/
+</script>
+</body>
+</html>

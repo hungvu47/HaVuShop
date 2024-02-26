@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment/head :: head}">
+</head>
+<body>
+<div th:replace="~{fragment/header :: header}"></div>
+
+<section class="customer_account">
+    <div class="bread-crumb">
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb">
+                <li class="link"><a href="/home">Trang chủ /</a></li>
+                <li class="link"><a href="/account">Tài khoản /</a></li>
+                <li class="link">Địa chỉ</li>
+            </ul>
+        </div>
+    </div>
+    <div class="info-container">
+        <div class="row">
+            <div class="account-left">
+                <div class="block-account">
+                    <h5 class="title-account">Trang tài khoản</h5>
+                    <p>Xin chào, <span></span></p>
+                    <ul>
+                        <li><a class="title-info" th:href="@{/account}">Thông tin tài khoản</a></li>
+                        <li><a class="title-info" th:href="@{/account/orders}">Đơn hàng của bạn</a></li>
+                        <li><a class="title-info" th:href="@{/account/changepassword}">Đổi mật khẩu</a></li>
+                        <li><a class="title-info" href="">Sổ địa chỉ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="account-right">
+                <h1 class="title-head">Sổ địa chỉ</h1>
+                <div class="my-account">
+                    <div class="dashboard">
+                        <div><a th:href="@{/account/address}" class="btn">Thêm địa chỉ</a></div>
+                    </div>
+
+                    <h2>Danh sách địa chỉ đã lưu</h2>
+                    <div th:each="address : ${addresses}">
+                        <p th:text="${address.wards} + ', ' + ${address.district} + ', ' + ${address.province}"></p>
+                        <p th:text="${address.details}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="~{fragment/footer :: footer}"></div>
+</body>
+</html>

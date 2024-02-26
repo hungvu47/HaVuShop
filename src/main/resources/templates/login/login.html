@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>HaVu Studios</title>
+    <link rel="stylesheet" th:href="@{/css/fragment/header.css}">
+    <link rel="stylesheet" th:href="@{/css/login/login.css}">
+    <link rel="stylesheet" th:href="@{css/fragment/footer.css}">
+    <link
+            rel="stylesheet"
+            th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css}"
+    />
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}" />
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+    />
+</head>
+<body>
+<div class="header" th:replace="~{fragment/header :: header}"></div>
+<div class="login">
+    <div class="login-img">
+        <div class="container">
+            <div class="title-login">
+                Đăng nhập tài khoản
+            </div>
+            <ul class="breadcumb">
+                <li class="home">
+                    <a th:href="@{/home}">Trang chủ</a>
+                    <span> <i class="fa-solid fa-chevron-right"></i> </span>
+                </li>
+                <li class="text">
+                    <span style="color: #f3a270; font-weight: 400; ">Đăng nhập tài khoản</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="login-body">
+        <div class="container">
+            <div class="page_login">
+                <div class="row">
+                    <div class="row-login">
+                        <div class="row align-items-center">
+                            <div class="pagecustome">
+                                <div class="wpx">
+                                    <ul class="menulist">
+                                        <li class="active"><a href="">Đăng nhập</a></li>
+                                        <li><a th:href="@{/register}">Đăng ký</a></li>
+                                    </ul>
+                                    <h1 class="title-heads"><span>Đăng nhập</span></h1>
+                                    <div th:if="${param.error}">
+                                        Tài khoản hoặc mật khẩu không chính xác
+                                    </div>
+                                    <div id="login" class="section">
+
+                                        <form th:action="@{/login}" method="POST">
+                                            <span class="form-signup"></span>
+                                            <div class="form-signup">
+                                                <fieldset class="form-group">
+                                                    <input name="username" type="text" required placeholder="Tên đăng nhập">
+                                                </fieldset>
+                                                <fieldset class="form-group">
+                                                    <input name="password" type="password" required placeholder="Mật khẩu">
+                                                </fieldset>
+                                                <div class="pull-xs">
+                                                    <input class="btn_50" type="submit" value="Đăng nhập">
+                                                    <span class="quenmk">Quên mật khẩu</span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="social-login">
+                                        <p style="text-align: center; margin-bottom: 15px;">Hoặc đăng nhập bằng</p>
+                                        <a href=""><img width="128" height="37" src="//bizweb.dktcdn.net/assets/admin/images/login/fb-btn.svg" alt=""></a>
+                                        <a href=""><img width="128" height="37" src="//bizweb.dktcdn.net/assets/admin/images/login/gp-btn.svg" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="~{fragment/footer :: footer}"></div>
+</body>
+</html>

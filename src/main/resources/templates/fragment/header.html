@@ -1,0 +1,143 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+<header class="header" th:fragment="header">
+    <div class="container">
+        <div class="header-logo">
+            <a th:href="@{/home}">
+                <img
+                        width="200"
+                        height="48"
+                        src="https://i.imgur.com/aiX1n2n.png"
+                        alt="logo"
+                /></a>
+        </div>
+        <div class="header-menu">
+            <nav class="header-nav">
+                <ul class="item-big">
+                    <li class="nav-item">
+                        <a th:href="@{/home}" class="a-header">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/gioi-thieu}" class="a-header">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/collections}" class="a-header">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/lien-he}" class="a-header">Liên hệ</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="header-icons">
+            <ul class="icon-big">
+                <!-- search -->
+                <li class="header-search">
+                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </li>
+                <!-- user -->
+                <li class="header-user">
+                    <i class="icon-user fa-regular fa-user"></i>
+                    <ul class="sub-nav">
+                        <li>
+                            <a sec:authorize="isAnonymous()" th:href="@{/login}">Đăng nhập</a>
+                            <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Đăng xuất</a>
+                        </li>
+                        <li>
+                            <a sec:authorize="isAnonymous()" th:href="@{/register}">Đăng ký</a>
+                            <a sec:authorize="isAuthenticated()" th:href="@{/account}">Tài khoản</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- wishlist -->
+                <li class="header-wishlist">
+                    <a href="#"
+                    ><i class="fa-regular fa-heart"></i>
+                        <span class="js-wishlist-count">1</span>
+                    </a>
+                </li>
+                <!-- cart -->
+                <li class="header-cart block-cart">
+                    <a th:href="@{/cart/view}"
+                    ><i class="fa-solid fa-cart-shopping"></i>
+                        <span class="js-cart-count">1</span>
+                    </a>
+
+                    <div class="top-card-content" th:if="${#authorization.expression('isAuthenticated()')}">
+                        <div class="CartHeaderContainer">
+                            <form action="" class="cartheader">
+
+                                <div class="cart-body" th:if="${cart.cartItems.isEmpty()}">
+                                    <i class="fa-solid fa-bag-shopping"></i>
+                                    <p>Giỏ hàng trống</p>
+                                </div>
+
+                                <div class="cart-body" th:unless="${cart.cartItems.isEmpty()}">
+                                    <div class="cart-product" th:each="cartItem : ${cart?.cartItems}">
+                                        <a href="" class="cart-image">
+                                            <img
+                                                    width="80"
+                                                    height="80"
+                                                    th:src="${cartItem.product.primaryImage.imagePath}"
+                                            />
+                                        </a>
+                                        <div class="cart-info">
+                                            <div class="cart-name">
+                                                <a href="" th:text="${cartItem.product.productName}"></a>
+                                                <a href="" class="cart-btn-remove">Xóa</a>
+                                            </div>
+                                            <div class="grid">
+                                                <div class="grid-item cart-item-name">
+                                                    <label class="cart_quantity">Số lượng</label>
+                                                    <div class="input-group-btn">
+                                                        <button class="items-count">-</button>
+                                                        <input type="text" class="number-sidebar" th:value="${cartItem.quantity}"/>
+                                                        <button class="items-count">+</button>
+                                                    </div>
+                                                </div>
+                                                <div class="grid-item cart-price">
+                                                    <span class="cart-price" th:text="${#numbers.formatDecimal(cartItem.product.price, 0, 'COMMA', 0, 'POINT')} + 'đ'"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="cart-footer">
+                                    <div class="cartSub-total">
+                                        <div class="cart-col_6">Tổng tiền:</div>
+                                        <div class="cart-totle">
+                                            <span class="total-price" th:text="${#numbers.formatDecimal(total, 0 , 'COMMA', 0, 'POINT') + 'đ'}"></span>
+                                        </div>
+                                    </div>
+                                    <div class="cart-btn-checkout">
+                                        <button class="cart-btn-checkout">Thanh toán</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="top-card-content" th:unless="${#authorization.expression('isAuthenticated()')}">
+                        <div class="cart-body">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <p><a th:href="@{/login}">Đăng nhập</a> để xem giỏ hàng của bạn</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+</body>
+</html>

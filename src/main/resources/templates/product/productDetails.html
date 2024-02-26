@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HaVu Studios</title>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" th:href="@{/css/user/homebody.css}">
+    <link rel="stylesheet" th:href="@{/css/user/menuNav.css}">
+    <link rel="stylesheet" th:href="@{/css/fragment/header.css}">
+    <link rel="stylesheet" th:href="@{/css/fragment/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/user/product-style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragment/header :: header}"></div>
+
+<section class="productDetails">
+    <div th:replace="~{fragment/breadCrumb :: breadCrumb}"></div>
+    <div class="container">
+        <div class="details-product">
+            <input type="hidden" name="productId">
+            <div class="row">
+                <div class="product-detail-left product-images col-12 col-md-12 col-lg-6">
+                    <div class="product-image-block relative">
+
+                        <div class="gallery-top swiper-container">
+                            <div class="swiper-wrapper" id="lightgallery">
+
+                                <a class="swiper-slide" data-hash="0" th:href="${product.primaryImage.imagePath}" title="Click để xem">
+                                    <img height="520" width="520" th:src="${product.primaryImage.imagePath}" class="img-responsive mx-auto d-block swiper-lazy" />
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="swiper-container gallery-thumbs">
+                            <div class="swiper_wrapper">
+                                <div class="swiper-slide" data-hash="0">
+                                    <div class="p-100" th:each="image : ${product.images}">
+                                        <img height="100" width="100" th:src="${image.imagePath}" class="swiper-lazy" />
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="swiper-button-next">
+                            </div>
+                            <div class="swiper-button-prev">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class=" col-12 col-md-12 col-lg-6">
+                    <div class="details-pro">
+                        <h1 class="title-product" th:text="${product.productName}"></h1>
+
+                        <div class="inventory_quantity">
+                            <div class="thump-break">
+								<span class="mb-break">
+									<span class="stock-brand-title">Thương hiệu:</span>
+									<span class="a-vendor">Simplehome
+									</span>
+								</span>
+                                <span class="line">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                                <span class="mb-break inventory">
+									<span class="stock-brand-title">Tình trạng:</span>
+
+
+									<span class="a-stock">
+										Còn hàng
+									</span>
+
+
+								</span>
+
+                            </div>
+                        </div>
+                        <div class="price-box clearfix">
+
+							<span class="special-price">
+								<span class="price product-price" th:text="${product.price} + '₫'"></span>
+								<meta itemprop="price" content="6190000">
+								<meta itemprop="priceCurrency" content="VND">
+							</span>
+                            <!-- Giá Khuyến mại -->
+<!--                            <span class="old-price" itemprop="priceSpecification" itemscope="" itemtype="http://schema.org/priceSpecification">-->
+<!--								<span class="price product-price-old">-->
+<!--									7.000.000₫-->
+<!--								</span>-->
+<!--								<meta itemprop="price" content="7000000">-->
+<!--								<meta itemprop="priceCurrency" content="VND">-->
+<!--							</span> &lt;!&ndash; Giás gốc &ndash;&gt;-->
+<!--                            <span class="save-price">Tiết kiệm:-->
+<!--								<span class="price product-price-save">810.000₫</span>-->
+<!--							</span> &lt;!&ndash; Tiết kiệm &ndash;&gt;-->
+
+                        </div>
+
+                        <div class="motangan">
+                            <h3>Mô tả:</h3>
+                            <div class="rte">
+                                <p th:text="${product.description}"></p>
+                            </div>
+                        </div>
+
+                        <form enctype="multipart/form-data" data-cart-form id="add-to-cart-form" th:action="@{/cart/add}" method="post" class="form-inline">
+                            <input type="hidden" name="productId" th:value="${product.productId}">
+
+                            <div class="form-product">
+                                <div class="clearfix"></div>
+                                <script>
+                                    $(document).on('click', '.modalcoupon-close, #modal-coupon-product .modalcoupon-overlay, .fancybox-overlay', function(e){
+                                        $("#modal-coupon-product").fadeOut(0);
+                                        awe_hidePopup();
+                                    });
+                                    $(document).ready(function ($){
+                                        var modal = $('.modalcoupon-product');
+                                        var btn = $('.coupon-toggle-btn');
+                                        var span = $('.modalcoupon-close');
+                                        btn.click(function () {
+                                            modal.show();
+                                        });
+                                        span.click(function () {
+                                            modal.hide();
+                                        });
+                                        $(window).on('click', function (e) {
+                                            if ($(e.target).is('.modal')) {
+                                                modal.hide();
+                                            }
+                                        });
+                                    });
+                                    $('.dk_btn_1').click(function () {
+                                        $('.contet_dk_1').slideToggle();
+                                        return false;
+                                    });
+                                    $('.dk_btn_2').click(function () {
+                                        $('.contet_dk_2').slideToggle();
+                                        return false;
+                                    });
+                                    $('.dk_btn_3').click(function () {
+                                        $('.contet_dk_3').slideToggle();
+                                        return false;
+                                    });
+                                    $('.dk_btn_4').click(function () {
+                                        $('.contet_dk_4').slideToggle();
+                                        return false;
+                                    });
+                                    $(document).on('click', '.dis_copy',function(e){
+                                        e.preventDefault();
+                                        var copyText = $(this).attr('data-copy');
+                                        var copyTextarea = document.createElement("textarea");
+                                        copyTextarea.textContent = copyText;
+                                        document.body.appendChild(copyTextarea);
+                                        copyTextarea.select();
+                                        document.execCommand("copy");
+                                        document.body.removeChild(copyTextarea);
+                                        var cur_text = $(this).text();
+                                        var $cur_btn = $(this);
+                                        $(this).addClass("disabled");
+                                        $(this).text("Đã lưu");
+                                        $(this).parent().addClass('active');
+                                        setTimeout(function(){
+                                            $cur_btn.removeClass("disabled");
+                                            $cur_btn.parent().removeClass('active');
+                                            $cur_btn.text(cur_text);
+                                        },2500)
+                                    })
+                                </script>
+
+                                <div class="clearfix form-group ">
+                                    <div class="flex-quantity">
+                                        <div class="custom custom-btn-number show">
+                                            <label>Số lượng:</label>
+                                            <div class="input_number_product">
+                                                <button class="btn_num num_1 button button_qty" onClick="var result = document.getElementById('qtym'); var qtypro = result.value; if( !isNaN( qtypro ) &amp;&amp; qtypro &gt; 1 ) result.value--;return false;" type="button">&minus;</button>
+                                                <input type="text" id="qtym" name="quantity" value="1" maxlength="3" class="form-control prd_quantity" onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;" onchange="if(this.value == 0)this.value=1;">
+                                                <button class="btn_num num_2 button button_qty" onClick="var result = document.getElementById('qtym'); var qtypro = result.value; if( !isNaN( qtypro )) result.value++;return false;" type="button"><span>&plus;</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="btn-mua button_actions clearfix">
+
+                                            <a href="" class="buynow" title="">
+                                                <span>MUA NGAY</span><span>Giao hàng tận nơi hoặc nhận tại cửa hàng</span>
+                                            </a>
+                                            <div style='display: flex; flex-wrap: wrap; width: 100%'>
+                                                <button type="submit" class="btn btn_base normal_button btn_add_cart add_to_cart btn-cart">
+                                                    <span class="txt-main text_1">Thêm vào giỏ hàng</span>
+                                                </button>
+                                                <a class="btn btn-installment" href="/lien-he" title="">
+                                                    TƯ VẤN THIẾT KẾ<span>Để lại thông tin liên hệ</span>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="~{fragment/footer :: footer}"></div>
+</body>
+</html>

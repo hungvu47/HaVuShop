@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+    .main-container {
+        width: 90%;
+        max-width: 350px;
+        margin: 50px auto;
+    }
+    .select-item {
+        width: 100%;
+        font-family: "Montserrat", sans-serif;
+        margin: 15px auto;
+        position: relative;
+    }
+    .select-item > label {
+        display: block;
+        font-size: 18px;
+    }
+    .select-item > select {
+        margin-top: 10px;
+        width: 100%;
+        font-family: "Montserrat", sans-serif;
+        font-size: 16px;
+        line-height: 36px;
+        height: 36px;
+        border-radius: 3px;
+        outline: none;
+        background: none;
+        box-shadow: none;
+        border: 1px solid rgb(175, 175, 175);
+    }
+    .select-item > span {
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        right: 22px;
+        top: 38px;
+        display:none;
+        z-index: 5;
+    }
+    .select-item > span > img {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<div class="main-container">
+    <form th:action="@{/account/saveAddress}" th:object="${addressDTO}" method="post">
+        <div class="select-item">
+            <input type="hidden" name="user_id" th:value="#{user.userId}">
+            <label for="city-province">Tỉnh/Thành Phố :</label>
+            <select id="city-province" th:field="*{provinceName}" name="provinceName" >
+                <option value='0'>&nbsp;Chọn Tỉnh/Thành Phố...</option>
+                <option value='Thành phố Hà Nội' data-id="01">&nbspThành phố Hà Nội</option>
+                <option value='Thành phố Hồ Chí Minh' data-id="79">&nbspThành phố Hồ Chí Minh</option>
+                <option value='Thành phố Hải Phòng' data-id="31">&nbspThành phố Hải Phòng</option>
+                <option value='Thành phố Đà Nẵng' data-id="48">&nbspThành phố Đà Nẵng</option>
+                <option value='Thành phố Cần Thơ' data-id="92">&nbspThành phố Cần Thơ</option>
+                <option value='Tỉnh Hà Giang' data-id="02">&nbspTỉnh Hà Giang</option>
+                <option value='Tỉnh Cao Bằng' data-id="04">&nbspTỉnh Cao Bằng</option>
+                <option value='Tỉnh Bắc Kạn' data-id="06">&nbspTỉnh Bắc Kạn</option>
+                <option value='Tỉnh Tuyên Quang' data-id="08">&nbspTỉnh Tuyên Quang</option>
+                <option value='Tỉnh Lào Cai' data-id="10">&nbspTỉnh Lào Cai</option>
+                <option value='Tỉnh Điện Biên' data-id="11">&nbspTỉnh Điện Biên</option>
+                <option value='Tỉnh Lai Châu' data-id="12">&nbspTỉnh Lai Châu</option>
+                <option value='Tỉnh Sơn La' data-id="14">&nbspTỉnh Sơn La</option>
+                <option value='Tỉnh Yên Bái' data-id="15">&nbspTỉnh Yên Bái</option>
+                <option value='Tỉnh Hoà Bình' data-id="17">&nbspTỉnh Hoà Bình</option>
+                <option value='Tỉnh Thái Nguyên' data-id="19">&nbspTỉnh Thái Nguyên</option>
+                <option value='Tỉnh Lạng Sơn' data-id="20">&nbspTỉnh Lạng Sơn</option>
+                <option value='Tỉnh Quảng Ninh' data-id="22">&nbspTỉnh Quảng Ninh</option>
+                <option value='Tỉnh Bắc Giang' data-id="24">&nbspTỉnh Bắc Giang</option>
+                <option value='Tỉnh Phú Thọ' data-id="25">&nbspTỉnh Phú Thọ</option>
+                <option value='Tỉnh Vĩnh Phúc' data-id="26">&nbspTỉnh Vĩnh Phúc</option>
+                <option value='Tỉnh Bắc Ninh' data-id="27">&nbspTỉnh Bắc Ninh</option>
+                <option value='Tỉnh Hải Dương' data-id="30">&nbspTỉnh Hải Dương</option>
+                <option value='Tỉnh Hưng Yên' data-id="33">&nbspTỉnh Hưng Yên</option>
+                <option value='Tỉnh Thái Bình' data-id="34">&nbspTỉnh Thái Bình</option>
+                <option value='Tỉnh Hà Nam' data-id="35">&nbspTỉnh Hà Nam</option>
+                <option value='Tỉnh Nam Định' data-id="36">&nbspTỉnh Nam Định</option>
+                <option value='Tỉnh Ninh Bình' data-id="37">&nbspTỉnh Ninh Bình</option>
+                <option value='Tỉnh Thanh Hóa' data-id="38">&nbspTỉnh Thanh Hóa</option>
+                <option value='Tỉnh Nghệ An' data-id="40">&nbspTỉnh Nghệ An</option>
+                <option value='Tỉnh Hà Tĩnh' data-id="42">&nbspTỉnh Hà Tĩnh</option>
+                <option value='Tỉnh Quảng Bình' data-id="44">&nbspTỉnh Quảng Bình</option>
+                <option value='Tỉnh Quảng Trị' data-id="45">&nbspTỉnh Quảng Trị</option>
+                <option value='Tỉnh Thừa Thiên Huế' data-id="46">&nbspTỉnh Thừa Thiên Huế</option>
+                <option value='Tỉnh Quảng Nam' data-id="49">&nbspTỉnh Quảng Nam</option>
+                <option value='Tỉnh Quảng Ngãi' data-id="51">&nbspTỉnh Quảng Ngãi</option>
+                <option value='Tỉnh Bình Định' data-id="52">&nbspTỉnh Bình Định</option>
+                <option value='Tỉnh Phú Yên' data-id="54">&nbspTỉnh Phú Yên</option>
+                <option value='Tỉnh Khánh Hòa' data-id="56">&nbspTỉnh Khánh Hòa</option>
+                <option value='Tỉnh Ninh Thuận' data-id="58">&nbspTỉnh Ninh Thuận</option>
+                <option value='Tỉnh Bình Thuận' data-id="60">&nbspTỉnh Bình Thuận</option>
+                <option value='Tỉnh Kon Tum' data-id="62">&nbspTỉnh Kon Tum</option>
+                <option value='Tỉnh Gia Lai' data-id="64">&nbspTỉnh Gia Lai</option>
+                <option value='Tỉnh Đắk Lắk' data-id="66">&nbspTỉnh Đắk Lắk</option>
+                <option value='Tỉnh Đắk Nông' data-id="67">&nbspTỉnh Đắk Nông</option>
+                <option value='Tỉnh Lâm Đồng' data-id="68">&nbspTỉnh Lâm Đồng</option>
+                <option value='Tỉnh Bình Phước' data-id="70">&nbspTỉnh Bình Phước</option>
+                <option value='Tỉnh Tây Ninh' data-id="72">&nbspTỉnh Tây Ninh</option>
+                <option value='Tỉnh Bình Dương' data-id="74">&nbspTỉnh Bình Dương</option>
+                <option value='Tỉnh Đồng Nai' data-id="75">&nbspTỉnh Đồng Nai</option>
+                <option value='Tỉnh Bà Rịa - Vũng Tàu' data-id="77">&nbspTỉnh Bà Rịa - Vũng Tàu</option>
+                <option value='Tỉnh Long An' data-id="80">&nbspTỉnh Long An</option>
+                <option value='Tỉnh Tiền Giang' data-id="82">&nbspTỉnh Tiền Giang</option>
+                <option value='Tỉnh Bến Tre' data-id="83">&nbspTỉnh Bến Tre</option>
+                <option value='Tỉnh Trà Vinh' data-id="84">&nbspTỉnh Trà Vinh</option>
+                <option value='Tỉnh Vĩnh Long' data-id="86">&nbspTỉnh Vĩnh Long</option>
+                <option value='Tỉnh Đồng Tháp' data-id="87">&nbspTỉnh Đồng Tháp</option>
+                <option value='Tỉnh An Giang' data-id="89">&nbspTỉnh An Giang</option>
+                <option value='Tỉnh Kiên Giang' data-id="91">&nbspTỉnh Kiên Giang</option>
+                <option value='Tỉnh Hậu Giang' data-id="93">&nbspTỉnh Hậu Giang</option>
+                <option value='Tỉnh Sóc Trăng' data-id="94">&nbspTỉnh Sóc Trăng</option>
+                <option value='Tỉnh Bạc Liêu' data-id="95">&nbspTỉnh Bạc Liêu</option>
+                <option value='Tỉnh Cà Mau' data-id="96">&nbspTỉnh Cà Mau</option>
+            </select>
+        </div>
+
+        <div class="select-item district-town-select">
+            <label for="district-town">Quận/Huyện :</label>
+            <select id="district-town" th:field="*{districtName}" name="districtName">
+                <option value='0' data-id="">&nbsp;Chọn Quận/Huyện...</option>
+            </select>
+            <span><img src="https://firebasestorage.googleapis.com/v0/b/qtv-music-shop.appspot.com/o/loading-icon%2Floading-icon-small.gif?alt=media&token=769f1086-0302-4e17-852e-e1409ec215b4" alt="loading-icon"></span>
+        </div>
+
+        <div class="select-item ward-commune-select">
+            <label for="ward-commune">Xã/Phường :</label>
+            <select id="ward-commune" th:field="*{wardsName}" name="wardsName">
+                <option value='0'>&nbsp;Chọn Phường/Xã...</option>
+            </select>
+            <span><img src="https://firebasestorage.googleapis.com/v0/b/qtv-music-shop.appspot.com/o/loading-icon%2Floading-icon-small.gif?alt=media&token=769f1086-0302-4e17-852e-e1409ec215b4" alt="loading-icon"></span>
+        </div>
+
+        <div class="select-item details">
+            <label for="details">Chi tiết</label>
+            <input type="text" id="details" name="details">
+        </div>
+
+        <button type="submit">Lưu địa chỉ</button>
+    </form>
+
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/address.js"></script>
+<script>
+    async function getCityName(cityId) {
+        const { data: city } = await axios.get(apiCityUrl + '/' + cityId);
+        return city.name;
+    }
+
+    async function getDistrictName(districtId) {
+        const { data: district } = await axios.get(apiDistrictUrl + '/' + districtId);
+        return district.name;
+    }
+
+    async function getCommuneName(communeId) {
+        const { data: commune } = await axios.get(apiCommuneUrl + '/' + communeId);
+        return commune.name;
+    }
+</script>
+</html>

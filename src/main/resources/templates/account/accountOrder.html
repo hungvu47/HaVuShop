@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment/head :: head}">
+</head>
+<body>
+<div th:replace="~{fragment/header :: header}"></div>
+
+<section class="customer_account">
+    <div class="bread-crumb">
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb">
+                <li class="link"><a href="/home">Trang chủ /</a></li>
+                <li class="link"><a href="/account">Tài khoản /</a></li>
+                <li class="link">Đơn hàng</li>
+            </ul>
+        </div>
+    </div>
+    <div class="info-container">
+        <div class="row">
+            <div class="account-left">
+                <div class="block-account">
+                    <h5 class="title-account">Trang tài khoản</h5>
+                    <p>Xin chào, <span></span></p>
+                    <ul>
+                        <li><a class="title-info" th:href="@{/account}">Thông tin tài khoản</a></li>
+                        <li><a class="title-info" th:href="@{/account/orders}">Đơn hàng của bạn</a></li>
+                        <li><a class="title-info" th:href="@{/account/changepassword}">Đổi mật khẩu</a></li>
+                        <li><a class="title-info" th:href="@{/account/addresses}">Sổ địa chỉ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="account-right">
+                <h1 class="title-head">Đơn hàng của bạn</h1>
+                <div class="my-account">
+                    <div class="dashboard">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Ngày đặt</th>
+                                <th>Trạng thái</th>
+                                <th>Tổng giá trị</th>
+                                <!-- Các cột khác tùy thuộc vào yêu cầu của bạn -->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="order : ${orders}">
+                                <td th:text="'#' + ${order.id}"></td>
+                                <td th:text="${#dates.format(order.orderDate, 'dd/MM/yyyy')}"></td>
+                                <td th:text="${order.orderStatus}"></td>
+                                <td th:text="${#numbers.formatDecimal(order.totalAmount + 40000, 0 , 'COMMA', 0, 'POINT') + 'đ'}"></td>
+                                <!-- Các cột khác tùy thuộc vào yêu cầu của bạn -->
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="~{fragment/footer :: footer}"></div>
+</body>
+</html>

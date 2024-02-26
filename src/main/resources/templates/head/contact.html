@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HaVu Shop</title>
+    <link
+            rel="stylesheet"
+            th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css}"
+    />
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}" />
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" th:href="@{/css/fragment/header.css}">
+    <link rel="stylesheet" th:href="@{/css/fragment/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/user/homebody.css}">
+    <link rel="stylesheet" th:href="@{/css/user/menuNav.css}">
+</head>
+<body>
+
+    <div th:replace="~{fragment/header :: header}"></div>
+
+    <section class="layout-contact">
+        <div class="bread-crumb">
+            <div class="breadcrumb-container">
+                <ul class="breadcrumb">
+                    <li class="link"><a href="/home">Trang chủ /</a></li>
+                    <li class="link">Liên hệ</li>
+                </ul>
+            </div>
+        </div>
+    <div class="container">
+        <div class="row">
+            <div class="content">
+                <div class="contact">
+                    <h4>Nơi giải đáp mọi thắc mắc của bạn?</h4>
+                    <div class="des_foo">Với sứ mệnh "Khách hàng là ưu tiên số 1" chúng tôi luôn mạng lại giá trị tốt nhất</div>
+                    <div class="info-contact">
+                        <div class="group-address">
+                            <ul>
+                                <li><div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+                                    <div class="info"><b>Địa chỉ</b><span>179 Đông Các, Ô Chợ Dừa, Đống Đa, Hà Nội</span></div></li>
+                                <li><div class="icon"><i class="fa-solid fa-clock"></i></i></div>
+                                    <div class="info"><b>Thời gian làm việc</b><span>8h - 22h từ thứ 2 đến chủ nhật</span></div></li>
+                                <li><div class="icon"><i class="fa-solid fa-phone-volume"></i></div>
+                                    <div class="info"><b>Hotline</b><span>1900 6750</span></div></li>
+                                <li><div class="icon"><i class="fa-solid fa-envelope"></i></div>
+                                    <div class="info"><b>Email</b><span>support@sapo.vn</span></div></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-contact">
+                    <h4>LIÊN HỆ VỚI CHÚNG TÔI</h4>
+                    <span class="content-form">Nếu bạn có thắc mắc gì, có thể gửi yêu cầu cho chúng tôi, và chúng tôi sẽ liên
+              lạc lại với bạn sớm nhất có thể .</span>
+                    <div>
+                        <form method="post" action="/postcontact" id="contact" accept-charset="UTF-8"><input name="FormType" type="hidden" value="contact"/>
+                            <input name="utf8" type="hidden" value="true"/>
+                            <input type="hidden" id="Token-00cc192611014d9a9d742642bf99731d" name="Token" />
+                            <script src="https://www.google.com/recaptcha/api.js?render=6Ldtu4IUAAAAAMQzG1gCw3wFlx_GytlZyLrXcsuK"></script>
+                            <script>grecaptcha.ready(function() {grecaptcha.execute("6Ldtu4IUAAAAAMQzG1gCw3wFlx_GytlZyLrXcsuK", {action: "contact"}).then(function(token) {document.getElementById("Token-00cc192611014d9a9d742642bf99731d").value = token});});</script>
+                            <div class="group_contact">
+                                <input placeholder="Họ và tên" type="text" class="form-control  form-control-lg" required value="" name="contact[Name]">
+                                <input placeholder="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required id="email1" class="form-control form-control-lg" value="" name="contact[email]">
+                                <input type="number" placeholder="Điện thoại*" name="contact[phone]"  class="form-control form-control-lg" required>
+                                <textarea placeholder="Nội dung" name="contact[body]" id="comment" class="form-control content-area form-control-lg" rows="5" Required></textarea>
+                                <button type="submit" class="btn-lienhe">Gửi thông tin</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <div th:replace="~{fragment/footer :: footer}"></div>
+</body>
+</html>
